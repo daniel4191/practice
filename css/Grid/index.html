@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid </title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Grid System</h1>
+        <div class="row">
+            <div class="col-3 bg-info">I AM 3 Units</div>
+            <div class="col-6 bg-warning">I AM 6 Units</div>
+            <div class="col-3 bg-info">I AM 3 Units</div>
+        </div>
+
+        <div class="row">
+            <div class="col bg-primary">I AM auto size</div>
+            <div class="col bg-secondary">I AM auto size</div>
+            <div class="col-8 bg-primary">I AM auto size</div>
+        </div>
+
+        <h2 class="display-4">Responsive Grid</h2>
+        <div class="row">
+            <div class="col-md-6 col-xl-4 bg-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur.</div>
+            <div class="col-md-6 col-xl-4 bg-success">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur.</div>
+            <div class="col-md-6 col-xl-4 bg-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur.</div>
+            <div class="col-md-6 col-xl-4 bg-success">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur. </div>
+        </div>
+        <h2>Grid Alignment</h2>
+        <div class="row align-items-center">
+            <div class="col-3 bg-danger">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur.</div>
+            <div class="col-3 bg-warning">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur.</div>
+            <div class="col-3 bg-success">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur. Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Porro, nostrum ducimus autem repellat ad quibusdam nulla delectus cumque
+                cupiditate
+                quas soluta, deserunt reprehenderit hic similique, dignissimos excepturi laudantium maxime debitis?
+            </div>
+            <div class="col-3 bg-info align-self-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sint
+                quis,
+                repudiandae
+                voluptas beatae tempora obcaecati provident excepturi? Necessitatibus, alias doloremque fugiat nisi
+                accusamus labore? Quod omnis dolorum corporis pariatur. </div>
+        </div>
+
+        <h3>Justify Content</h3>
+        <div class="row border justify-content-center justify-content-lg-start justify=content-xl-between">
+            <div class="col-4 bg-primary">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati beatae molestiae cumque! Similique
+                voluptatem sunt dolorem laborum commodi recusandae nemo ut cum nobis fugiat. Veritatis tenetur quisquam
+                voluptatum repellat molestiae!
+            </div>
+            <div class="col-4 bg-info">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati beatae molestiae cumque! Similique
+                voluptatem sunt dolorem laborum commodi recusandae nemo ut cum nobis fugiat. Veritatis tenetur quisquam
+                voluptatum repellat molestiae!
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-4 col-md-6">
+                <img class="img-fluid" src="https://cdn.klnews.co.kr/news/photo/202207/305222_45583_4248.jpg"
+                    alt="dolphin">
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <img class="img-fluid"
+                    src="https://img.freepik.com/free-vector/duck-wearing-a-dinosaur-costume-cartoon-illustration_56104-491.jpg?w=2000&t=st=1668923607~exp=1668924207~hmac=cbb9332ace048cb2dee61d2c2fe1aa8789a81b146b7f16369d729b89109ed87c"
+                    alt="dinosore">
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <img class="img-fluid" src="https://www.jecheon.go.kr/site/www/images/contents/cst_319_img13.jpg"
+                    alt="character">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{% extends 'book_outlet/base.html' %}
+
+{% comment %} 여기는 일종의 head역할을 해주는 것이고 {% endcomment %}
+{% block title %}
+    All Books
+{% endblock %}
+
+{% comment %} 여기는 일종의 body 역할을 해준다. {% endcomment %}
+{% block content %}
+    <ul>
+        {% comment %} views에서 딕셔너리로 데이터를 보내게된 books가 여기 오게된다.{% endcomment %}
+        {% for book in books %}
+            {% comment %} href에 들어가는 인수 book_detail은  app단위의 urls.py에서 name으로 정의된 것으로 가져온다. {% endcomment %}
+            {% comment %} <li><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a>(Rating: {{ book.rating }})</li> {% endcomment %}
+            {% comment %} 바로 위의것은 샘플1이고 샘플2로는 book의 get_absolute를 app단위의 models.py에서 가져와서 사용하는것이다. {% endcomment %}
+            <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a>(Rating: {{ book.rating }})</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <p>Total Number Of Books: {{ total_number_of_books }} </p>
+    {% comment %} 이걸 그냥 써주면 Average Rating: {'rating__avg': 3.0} 이렇게 나온다. {% endcomment %}
+    {% comment %} <p>Average Rating:  {{ average_rating }} </p> {% endcomment %}
+    <p>Average Rating:  {{ average_rating.rating__avg }} </p>
+{% endblock  %}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Demo</title>
+</head>
+
+<body>
+    <h1>Forms Demo</h1>
+
+    file:///tacos?username=&password=&color=%23ff0000&num=76
+    <form action="/tacos">
+
+        <p>
+            <label for="username">Enter a Username:</label>
+            <input name="username" id="username" type="text" placeholder="username">
+        </p>
+        <p>
+            <label for="password">Enter a Password:</label>
+            <input id="password" type="password" placeholder="password" name="password">
+        </p>
+        <p>
+            <label for="color">Enter a Color:</label>
+            <input id="color" type="color" name="color">
+
+        </p>
+        <p>
+            <label for="number">Enter a number:
+                <input id="number" type="number" placeholder="enter a number" name="num" min="1" max="1000" step="2">
+            </label>
+        </p>
+        <button type="button">Regular button (won't submit)</button>
+        <button>Submit</button>
+        <!-- <button type="button">Please do not submit the form</button> -->
+        <input type="submit" value="click me">
+    </form>
+    <hr>
+    <!-- outside of a form -->
+    <button>not inside form</button>
+    <h2>Hi jacking searches</h2>
+    <h3>Search Reddit</h3>
+    <form action="https://www.reddit.com/search/">
+        <!-- name이 q인 이유는 현재 이 폼의 주된 목적이 reddit에서 검색을 하는 것인데, reddit의 검색 폼에 따르면 q=dog 이렇게 나오기때문에 query가 아닌 q로 설정해준것이다. -->
+        <input type="text" name="q">
+        <button>Search Reddit</button>
+    </form>
+    <h3>Search Google</h3>
+    <form action="https://www.google.com/search">
+        <input type="text" name="q">
+        <button>Search google</button>
+    </form>
+    <h3>Search Youtube</h3>
+    <form action="https://www.youtube.com/results">
+        <input type="text" name="search_query">
+        <button>Search youtube</button>
+        <!-- https://www.youtube.com/results?search_query=django -->
+        <!-- 위의 주소가 검색당시의 주소다. results와 search 사이에 ?가 있는데 이건 생략을 하는 것같다. -->
+    </form>
+
+    <h2>More Inputs!</h2>
+    <form action="/birds">
+        <input type="checkbox" name="agree_tos" id="agree">
+        <label for="agree">I agree to everything</label>
+        <p>
+            <label for="xs">XS:</label>
+            <!-- name이 같다는 것은 "같은 그룹"으로 묶였다는 뜻이고, 또 다시 생각하자면 그룹이 다를땐 중복선택이 가능하지만, 하나의 그룹 내에서는 하나의 선택지밖에 없다는 것도 알면 된다. -->
+            <input type="radio" name="size" id="xs" value="xs">
+            <label for="s">S:</label>
+            <input type="radio" name="size" id="s" value="s">
+            <label for="m">M:</label>
+            <input type="radio" name="size" id="m" value="m">
+        </p>
+        <p>
+            <label for="meal">Please Select an Entree</label>
+            <select name="meal" id="meal">
+                <option value="fish">Fish</option>
+                <option value="veg">Vegetarian</option>
+                <option value="steak">Steak</option>
+            </select>
+        </p>
+        <p>
+            <label for="cheese">Amount of Cheese:</label>
+            <input type="range" id="cheese" min="1" max="10" step="7" name="cheese_level">
+        </p>
+        <p>
+            <label for="requests">Any Special Requests?</label>
+            <br>
+            <textarea name="requests?" id="requests" cols="30" rows="10" placeholder="Type something here"></textarea>
+        </p>
+        <button>Submit</button>
+
+        <h2>Validations Demo</h2>
+        <form action="/dummy">
+            <label for="first">Enter First name</label>
+            <input type="text" name="first" required>
+            <p>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" minlength="5" maxlength="20" required>
+            </p>
+
+            <p>
+                <input type="email" required placeholder="write email address in here">
+                <input type="url">
+            </p>
+            <button>Submit</button>
+        </form>
+    </form>
+
+</body>
+
+</html>
