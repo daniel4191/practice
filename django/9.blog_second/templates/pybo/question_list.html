@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% comment %} pybo에 있는 pybo_filter.py를 가져오는 거다. {% endcomment %}
+{% load pybo_filter %}
+
+
+{% comment %} 이거는 base.html에 이미 link되어있으니 굳이 필요없어진것같다. {% endcomment %}
+{% comment %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}"> {% endcomment %}
+
+{% comment %} 이거는 별다른 경로 설정없이도 경로가 templates안에서 달라도 괜찮은것 같다. {% endcomment %}
+{% block content %}
+<div class="container my-3">
+    <table class="table">
+        <thead>
+            <tr class="text-center thead-dark">
+                <th>numbers</th>
+                <th>recommend</th>
+                <th style="width: 50%;">title</th>
+                <th>author</th>
+                <th>written date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% comment %} 이 question_list의 경우는 pybo의 views에서 context의 딕셔너리로 부터 비롯되었다. {% endcomment %}
+            {% if question_list %}            
+            {% for question in question_list %}
+            <tr class="text-center">
+                <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
+                {% comment %} recommend numbers on question list start{% endcomment %}
+                <td>
+                    {% if question.voter.all.count > 0 %}
+                    <span class="badge badge-warning px-2 py-1">
+                        {{ question.voter.all.count }}
+                    </span>
+                    {% endif %}
+                </td>
+                {% comment %} recommend numbers on question list end{% endcomment %}
+
+                <td class="text-left">
+                    {% comment %} href에 이렇게만 해놓으면, 추후 접속시 접속 404에러가 뜬다.
+                    이를 방지하기 위해서 이어서 앱단위의 urls.py에 "매핑"을 추가해줘야한다. {% endcomment %}
+                    {% comment %} 이것은 가장 기본적으로 사용하던 views로 부터 비롯된 매핑을 사용한 것이고 {% endcomment %}
+                    {% comment %} <li><a href="/pybo/{{ question.id }}/">{{ question.subject }}</a></li> {% endcomment %}
+                    {% comment %} 바로 이것이 urls.py로 부터 비롯된 더욱 안정적인 매핑이다. {% endcomment %}
+                    {% comment %} pybo는 앱단위에서 app_name이라고 네임스페이스로 지정된 이름이다. {% endcomment %}
+                    <a href="{% url 'pybo:detail' question.id %}">
+                        {{ question.subject }}
+                    </a>
+
+                    {% comment %} 답변이 있는가를 검사해서, 있다면 답변개수와 함께 css를 먹여준다. {% endcomment %}
+                    {% if question.answer_set.count %}
+                        <span class="text-danger small ml-2">
+                            {{ question.answer_set.count }}
+                        </span>
+                    {% endif %}
+                    {% comment %} 답변검사 종료 {% endcomment %}
+                </td>
+                <td>{{ question.author.username }}</td>
+                <td>{{ question.create_date }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">any questions</td>
+            </tr>
+            {% endif %}            
+        </tbody>
+    </table>
+
+    {% comment %} start paging process {% endcomment %}
+    <ul class="pagination justify-content-center">
+        {% comment %} previous page {% endcomment %}
+        {% if question_list.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ question_list.previous_page_number }}">
+                    previous
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                    previous
+                </a>
+            </li>
+        {% endif %}
+
+        {% comment %} page list {% endcomment %}
+        {% for page_number in question_list.paginator.page_range %}
+            {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+                {% if page_number == question_list.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}">
+                        {{ page_number }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}">
+                        {{ page_number }}
+                    </a>
+                </li>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% comment %} next page {% endcomment %}
+        {% if question_list.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ question_list.next_page_number }}">
+                    next
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                    next
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+    {% comment %} finished paging process {% endcomment %}
+
+    <a class="btn btn-primary" href="{% url 'pybo:question_create' %}">
+        question submit
+    </a>
+</div>
+{% endblock  %}

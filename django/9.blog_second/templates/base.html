@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    {% comment %} bootstrap css {% endcomment %}
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css">
+
+    {% comment %} pybo css {% endcomment %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+
+    <title>Hello, pybo!</title>
+</head>
+<body>
+    {% comment %} navigation bar area biggin {% endcomment %}
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <a class="navbar-brand" href="{% url 'pybo:index' %}">Daniel's page</a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" 
+            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav> {% endcomment %}
+    {% include "navbar.html" %}
+    {% comment %} navigation bar area end {% endcomment %}
+
+    {% comment %} templates contents area biggin {% endcomment %}
+    {% block content %}
+    {% endblock  %}
+    {% comment %} templates contents area end {% endcomment %}
+
+    <!-- jQuery JS -->
+    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> {% endcomment %}
+    <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    {% comment %} javascript start {% endcomment %}
+    {% block script %}
+    {% endblock  %}
+    {% comment %} javascript end {% endcomment %}
+    
+</body>
+</html>
