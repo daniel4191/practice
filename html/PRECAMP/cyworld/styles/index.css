@@ -78,18 +78,71 @@
 }
 
 .left__body__profile {
-    background-color: aqua;
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: flex-start;
+    /* 보이기로는 각 영역을 div로 구분했기 때문에 밀려나면서 정렬된것처럼 보일수있으나
+    실질적으로는 이 설정을 해주어야 정렬이 된다. */
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .left__body__footer {
-    background-color: black;
+    /* 이게 있어야 "가로를 전체적으로 사용하겠다"라는 의미가 된다. */
+    width: 100%;
 }
 
+.wrapper__feel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feel__title {
+    color: gray;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
 
 .wrapper__right {
     width: 524px;
     height: 472px;
-    background-color: violet;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 5px;
+}
+
+.wrapper__right__header {
+    width: 510px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0px 14px;
+}
+
+.right__header__title,
+.right__header__setting {
+    color: #55B2E4;
+    font-size: 9px;
+}
+
+.right__header__title {
+    font-size: 16px;
+}
+
+.wrapper__right__body {
+    width: 510px;
+    height: 445px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: white;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
