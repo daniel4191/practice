@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+div.container {
+    background-color: aquamarine;
+
+    /* 수평정렬 셋트 start */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* 수평정렬 셋트 end */
+    /* 위와 아래에는 50px씩, 왼쪽과 오른쪽에는 각각 0씩 이라는 의미 */
+    padding: 50px 0;
+}
+
+.wrapper {
+    width: 620px;
+    padding: 40px 30px;
+    background-color: white;
+    border: 1px solid gray;
+    /* 모서리를 둥글게 하는 작업 */
+    border-radius: 10px;
+}
+
+.wrapper__head {
+    /* border를 기준으로 아래쪽에 옵션을 주기 */
+
+    /* 만약 border라고 하고 값을 입력하게 되면
+    border라고 설정된 곳의 사방에 값이 입력된다. */
+    border-bottom: 1px dashed gray;
+    /* border를 기준하여 padding을 아랫쪽에 20px 추가 */
+    padding-bottom: 20px;
+    /* margin을 기준하여 아랫쪽에 20px 추가 */
+    margin-bottom: 20px;
+}
+
+.wrapper__head__title {
+    font-size: 32px;
+    background-color: orange;
+    color: white;
+    /* 글씨 정렬 */
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.wrapper__head__sub-title {
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+#point {
+    color: orange;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: underline;
+    /* 속성을 변경 */
+    display: block;
+}
+
+.wrapper__body {
+    border: 1px solid #dddddd;
+    padding: 20px 30px;
+}
+
+.diary-title {
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+.kimchi {
+    color: red;
+    font-weight: 600;
+}
+
+.highlight {
+    font-size: 22px;
+    color: blue;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.diary-date {
+    color: #919191;
+    font-size: 14px;
+    text-align: right;
+}
