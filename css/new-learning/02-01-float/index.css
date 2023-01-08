@@ -1,0 +1,20 @@
+.float-box {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+    /* float라는 속성을 현재 적용되어있는 class에 먹여서
+    방향 조정을 해줄수있다. */
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+p {
+    font-size: left;
+    /* float과 같아야 작동된다
+    예: float-left, clear도 left만 먹고
+    float-right, clear도 right만 먹는다. */
+    clear: left;
+}

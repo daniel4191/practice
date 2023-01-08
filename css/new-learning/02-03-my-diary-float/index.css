@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+div.container {
+    background-color: aquamarine;
+
+    /* 수평정렬 셋트 start */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* 수평정렬 셋트 end */
+    /* 위와 아래에는 50px씩, 왼쪽과 오른쪽에는 각각 0씩 이라는 의미 */
+    padding: 50px 0;
+}
+
+.wrapper {
+    width: 620px;
+    padding: 40px 30px;
+    background-color: white;
+    border: 1px solid gray;
+    /* 모서리를 둥글게 하는 작업 */
+    border-radius: 10px;
+}
+
+.wrapper__head {
+    /* border를 기준으로 아래쪽에 옵션을 주기 */
+
+    /* 만약 border라고 하고 값을 입력하게 되면
+    border라고 설정된 곳의 사방에 값이 입력된다. */
+    border-bottom: 1px dashed gray;
+    /* border를 기준하여 padding을 아랫쪽에 20px 추가 */
+    padding-bottom: 20px;
+    /* margin을 기준하여 아랫쪽에 20px 추가 */
+    margin-bottom: 20px;
+}
+
+.wrapper__head__title {
+    font-size: 32px;
+    background-color: orange;
+    color: white;
+    /* 글씨 정렬 */
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.wrapper__head__sub-title {
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+#point {
+    color: orange;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: underline;
+    /* 속성을 변경 */
+    display: block;
+}
+
+.wrapper__body {
+    border: 1px solid #dddddd;
+    padding: 20px 30px;
+}
+
+.diary-title {
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+.kimchi {
+    color: red;
+    font-weight: 600;
+}
+
+.highlight {
+    font-size: 22px;
+    color: blue;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.diary-date {
+    color: #919191;
+    font-size: 14px;
+    text-align: right;
+}
+
+.header {
+    border-bottom: 1px solid gray;
+}
+
+.header-inner {
+    width: 900px;
+    height: 100%;
+    /* 수평 기준 중앙 정렬 */
+    /* margin: 0 auto; */
+}
+
+.logo {
+    float: left;
+    width: 100px;
+    height: 80px;
+    padding-top: 22px;
+}
+
+
+.logo h1 a {
+    /* 기본적으로 a태그는 밑줄이 있다. 그것을 없애주는 것이다.*/
+    text-decoration: none;
+    color: orange;
+}
+
+.menu {
+    float: left;
+    /* calc를 사용할때는 반드시 a 사칙연산 b에 대해서
+    띄어쓰기가 되어있어야 작동된다. */
+    width: calc(100% - 200px);
+    height: 80px;
+    text-align: center;
+}
+
+.menu__ul {
+    /* inline-block이 가로값, 세로값을 조정하기에
+    용이한 명령이라고 한다. */
+    display: inline-block;
+
+}
+
+.menu__ul li {
+    float: left;
+    list-style: none;
+}
+
+/* 이 태그로 인해서 중앙 가장 위쪽에 있었던 것이
+약간 밑으로 내려와서 수평을 이룰수 있게 해줬다. */
+.menu__ul li a {
+    /* a태그는 inline요소인데, inline요소는
+    제약이 많다고 한다; */
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 29px 20px;
+}
+
+/* 마우스 오버했을때 메뉴 효과 */
+.menu__ul li a:hover {
+    color: orange;
+}
+
+.user {
+    float: left;
+    width: 100px;
+    height: 80px;
+    padding-top: 23px;
+}
+
+.clearfix {
+    clear: both;
+}
