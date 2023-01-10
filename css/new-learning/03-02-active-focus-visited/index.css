@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+.button1:active {
+    background: red;
+}
+
+.input1:focus {
+    background: green;
+}
+
+/* visited 명령은 더 쉽게 하자면 "방문한적이 있는"으로
+해석해도 무방하다 */
+.link1:visited {
+    color: red;
+}
