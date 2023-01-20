@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Day</title>
+    <script>
+        // dataFormMaker과 counterMake 변수는 각각의 "지역변수"가 된다.
+        const dateFormMaker = function () {
+            const inputYear = document.querySelector('#target-year-input').value;
+            const inputMonth = document.querySelector('#target-month-input').value;
+            const inputDate = document.querySelector('#target-date-input').value;
+
+            // const dateFormat = inputYear + '-' + inputMonth + '-' + inputDate;
+            // document는 해당 페이지의 html값 전체를 스크래핑하는 기능이다.
+            // querySelector를 사용하면 그 안에 입력한 태그의 값을 가져오는것이 가능하다.
+            // target-year-input라는 이름의 id값을 가져올것이고
+            // .value를 통해서 그 안에 있는 "값"을 가져올 것이다.
+            // console.log(document.querySelector('#target-year-input').value);
+            // console.log(document.querySelector('#target-month-input').value);
+            // console.log(document.querySelector('#target-date-input').value);
+            // console.log(inputYear, inputMonth, inputDate);
+
+            // `${}`처리는 파이썬으로 따지면 f-string으로 format해주는 것 같다.
+            // 바로 문자열로 만들어 주는 것이다. str로 감싸듯이.
+            // 이것을 "템플릿 리터럴"이라고 부른다고 한다.
+            const dateFormat = `${inputYear}-${inputMonth}-${inputDate}`
+            return dateFormat;
+        };
+
+        const counterMake = function () {
+            // console.log(dateFormMaker())
+            const targetDateInput = dateFormMaker()
+
+            // console.log(targetDateInput);
+            // 현재의 연월일을 영어식 표기법으로. 시간도 현재시각으로 24시간기준으로 출력
+            const nowDate = new Date();
+
+            // 특정 일자의 연월일을 영어식 표기법으로 출력. 시간은 오전 9시표준
+            // 하지만 .setHours(0,0,0,0)을 통해서 "자정"을 기준하는 것으로 리셋해줬다.
+            const targetDate = new Date(targetDateInput).setHours(0, 0, 0, 0);
+
+            // console.log(nowDate);
+            // 이것을 해주는 이유는 대상이되는 시각 - 현재 시각을 구해주는 것인데
+            // 1000을 곱해주는 이유는 0.001초 단위까지 계산이 되기때문에 해당 부분을 배제해주기 위해서 하는 것이다.
+            const remaining = (targetDate - nowDate) / 1000;
+
+            // 1시간은 3600초로 이루어져있다. 하루는 24시간으로 이루어져있다.
+            // "몇일"인지를 계산하기 위해서 이렇게 하는 것이다.
+            // Math.floor는 소수점 아래의 숫자를 "버림"해주는 기능이다.            
+            const remainingDate = Math.floor(remaining / 3600 / 24);
+
+            // 이 방식은 이미 계산된 날자에서 시간이 얼마나 되는지,
+            // 그리고 그 시간중에서도 날자를 빼주기 위해서 만들었는데
+            // ex. 10일 12시간일 경우에는 252시간이다. (10일 *24시간 = 240시간 + 12시간 = 252시간)
+            // 하지만 이렇게 해주니 결과값으로 0이 나왔다.
+            // 생각해보니깐 당연했다. 10일일 경우 24를 곱해주면 240. 거기에 24를 나눠주고
+            // 나머지를 구하라면 몫은 10이되고 나머지는 0이되니깐
+            // const remainingHours = ((remainingDate * 24) % 24);
+            // 그래서 다시 정의해주었다.
+            const remainingHours = Math.floor(remaining / 3600) % 24;
+
+            // 이것도 마찬가지로 계산이 안된다;
+            // const remainingMins = (remainingHours * 60) % 60;
+            const remainingMins = Math.floor(remaining / 60) % 60;
+
+            const remainingSecs = Math.floor(remaining) % 60;
+            console.log(remainingDate, remainingHours, remainingMins, remainingSecs);
+        };
+    </script>
+</head>
+
+<body>
+    <input id="target-year-input" class="target-input">
+    <input id="target-month-input" class="target-input">
+    <input id="target-date-input" class="target-input">
+    <button onclick="counterMake()">버튼</button>
+</body>
+
+</html>
