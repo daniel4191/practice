@@ -1,13 +1,6 @@
 const messageContainer = document.querySelector('#d-day-message');
 const container = document.querySelector('#d-day-container')
-
-// 이것은 container를 보이지 않게 해주는 것이다.
-container.style.display = 'none';
-// style로 접근해줌으로써 css를 직접적으로 javascript에 적용한다.
-// messageContainer.style.color = 'red';
-
-// innerHTML을 통해서 javascript에서 html식의 작성도 가능하다.
-messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>'
+const intervalIdArr = [];
 
 // 객체
 // const obj = {
@@ -48,8 +41,8 @@ messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>'
 // };
 
 // 참조 타입 케이스
-const arr = [1, 2, 3]
-console.log('arr === [1,2,3]', arr === [1, 2, 3])
+// const arr = [1, 2, 3]
+// console.log('arr === [1,2,3]', arr === [1, 2, 3])
 
 // dataFormMaker과 counterMake 변수는 각각의 "지역변수"가 된다.
 const dateFormMaker = function () {
@@ -75,6 +68,8 @@ const dateFormMaker = function () {
 };
 
 const counterMaker = function () {    
+    // 테스트용 콘솔 출력
+    // console.log('반복 실행중');
     // console.log(dateFormMaker())
     const targetDateInput = dateFormMaker()
 
@@ -96,6 +91,8 @@ const counterMaker = function () {
         // 만약, remaining이 0 이하라면, 타이머가 종료 되었습니다. 출력
         messageContainer.innerHTML = '<h3>타이머가 종료되었습니다.</h3>';
         messageContainer.style.display = 'flex';
+        // 타이머가 종료되어야 하는 상황에 종료시켜주는 함수
+        setClearInterval()
         return;
         
 
@@ -107,6 +104,8 @@ const counterMaker = function () {
         messageContainer.style.display = 'flex';
         // return은 함수가 종료가 됨을 의미한다.
         // 지금의 경우에는 최상위 함수인 const counterMaker = function ()의 종료다.
+
+        setClearInterval()
         return;
     }
 
@@ -190,16 +189,41 @@ const counterMaker = function () {
     let i = 0;
     for (let tag of documentArr) {
         document.getElementById(tag).textContent = remainingObj[timeKeys[i]];
-        i ++
+        i ++;
     }
 };
 
 const starter = function () {
+    // 지역함수(함수 내부의 함수)는 어떤 '임시'의 데이터값과 같다.
+    // 때문에 결과값을 원한다면 밖으로 빼주어야한다.
+    // const intervalIdArr = []
     container.style.display = 'flex';
     messageContainer.style.display = 'none';
-    for (let i = 0; i < 100; 1++) {
-        setTimeout(() => {
-            counterMaker();
-        }, 5000);      
-    }
+    counterMaker();
+    // 이 setInterval함수 하나로 밑의 3줄에 걸친 for문을 대체 가능
+    // setInterval(counterMaker, 1000)
+    // for (let i = 0; i < 100; 1++) {
+    //     setTimeout(counterMaker, 1000 * i);
+    // }
+
+    const intervalId = setInterval(counterMaker, 1000);
+    // console.log(intervalId);
+    
+    intervalIdArr.push(intervalId)
+    // console.log(intervalIdArr);
 };
+
+const setClearInterval = function () {
+    // 이것은 container를 보이지 않게 해주는 것이다.
+    container.style.display = 'none';
+    // style로 접근해줌으로써 css를 직접적으로 javascript에 적용한다.
+    // messageContainer.style.color = 'red';
+
+    // innerHTML을 통해서 javascript에서 html식의 작성도 가능하다.
+    messageContainer.innerHTML = '<h3>D-day를 입력해 주세요.</h3>'
+    // 바로 위의 함수인 starter에서 none값으로 주어졌기 때문에, flex로 변형해주어야한다.
+    messageContainer.style.display = 'flex';
+    for(let i = 0; i < intervalIdArr.length; i++) {
+        clearInterval(intervalIdArr[i]);
+    }
+}
